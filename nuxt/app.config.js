@@ -1,6 +1,11 @@
 let config = {}
 
-/// baseSnackbar
+config.mode = (process.env.NODE_ENV === 'development') ?
+  'dev' : 'prod'
+
+config.baseAxiosPrefixUrl = (config.mode === 'dev') ?
+  'http://localhost:3333/' : 'https://api_taskcmd.ru/'
+
 config.baseSnackbar = {
   timeout: 20000,
   infoColor: 'orange darken-4',
@@ -10,11 +15,6 @@ config.baseSnackbar = {
 
 ///////////////////////////////////////////////////
 
-config.mode = (process.env.NODE_ENV === 'development') ?
-  'dev': 'prod'
-
-config.apiBaseUrl = (config.mode === 'dev') ?
-  'http://taskadmin-api.loc/' : 'https://api.taskcmd.ru/'
 
 /**
  * Параметры ролей

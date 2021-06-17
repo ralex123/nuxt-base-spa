@@ -1,15 +1,22 @@
 <template>
-  <div>
-    <v-snackbar v-model="flagShow" :left="type === 'dev'" :color="color" :timeout="timeout">
-      <div class="base-snackbar-box">
-        <span v-html="message"/>
-        <v-btn color="white" text @click="hideSnackbar">OK</v-btn>
-      </div>
-    </v-snackbar>
-  </div>
+  <v-snackbar v-if="type === 'info'" v-model="flagShow" :color="color" :timeout="timeout">
+    <div class="base-snackbar-box-info">
+      <span v-html="message"/>
+      <v-btn color="white" text @click="hideSnackbar">OK</v-btn>
+    </div>
+  </v-snackbar>
+  <v-snackbar v-else v-model="flagShow" :left="true" :color="color" :timeout="0" max-width="100%">
+    <div class="base-snackbar-box-dev">
+      <pre class="base-snackbar-pre" v-html="message"/>
+      <v-btn color="white" text @click="hideSnackbar">OK</v-btn>
+    </div>
+  </v-snackbar>
 </template>
 
 <script>
+
+// this.$store.commit('baseSnackbar/show', {type: 'dev', message: 'dddd' })
+
 import config from "../../app.config";
 
 export default {
@@ -49,10 +56,20 @@ export default {
 </script>
 
 <style scoped>
-.base-snackbar-box {
+.base-snackbar-box-info {
   min-width: 400px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.base-snackbar-box-dev {
+  min-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.base-snackbar-pre {
+  overflow-y: auto;
 }
 </style>

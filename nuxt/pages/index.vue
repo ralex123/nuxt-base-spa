@@ -3,10 +3,14 @@
   <div class="grid">
 
     <div class="form blue-grey lighten-5 rounded-lg elevation-1 pa-6">
+      <h3>Вход</h3>
       <v-text-field v-model="username" label="Login"/>
       <v-text-field v-model="password" label="Password" type="password"/>
       <v-btn class="mt-4" color="primary" @click="login">Войти</v-btn>
+      <v-btn class="mt-4" color="primary" @click="msg">msg</v-btn>
     </div>
+
+    <pre style="font-size: 12px; font-family: Consolas; width: 800px; overflow-y: auto">{{exp}}</pre>
 
   </div>
 
@@ -18,7 +22,9 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+
+      exp: ''
     }
   },
 
@@ -26,7 +32,11 @@ export default {
 
     async login() {
 
-      this.$store.commit('baseSnackbar/show', {type: 'dev', message: 'dddd' })
+      ///this.$store.commit('baseSnackbar/show', {type: 'dev', message: 'dddd' })
+
+      let {data} = await this.$axios.get('/admin/exp/getSum', {params:{num1:1, num2:2}})
+      this.exp = data
+
 
       // let {data} = await this.$axios.get('/users/getIdentity',
       //   {params: {username: this.username, password: this.password}}
@@ -38,6 +48,11 @@ export default {
       //
       // }
 
+    },
+
+
+    msg() {
+      this.$store.commit('baseSnackbar/show', {type: 'info', message: 'dddd' })
     }
 
   }
