@@ -34,7 +34,8 @@ export default {
 
       ///this.$store.commit('baseSnackbar/show', {type: 'dev', message: 'dddd' })
 
-      let {data} = await this.$axios.get('/admin/exp/getSum', {params:{num1:1, num2:2}})
+      //let {data} = await this.$axios.get('/admin/exp/getSum', {params:{num1:1, num2:2}})
+      let {data} = await this.$axios.get('/admin/users/getUsers', {params:{num1:1, num2:2}})
       this.exp = data
 
 
