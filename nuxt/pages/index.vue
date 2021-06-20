@@ -8,9 +8,15 @@
       <v-text-field v-model="password" label="Password" type="password"/>
       <v-btn class="mt-4" color="primary" @click="login">Войти</v-btn>
       <v-btn class="mt-4" color="primary" @click="msg">msg</v-btn>
+      <v-btn class="mt-4" color="primary" @click="$router.push('/page')">to page</v-btn>
+
+
+      <div class="mt-5">
+        <code>{{$store.state.baseAuth}}</code>
+      </div>
     </div>
 
-    <pre style="font-size: 12px; font-family: Consolas; width: 800px; overflow-y: auto">{{exp}}</pre>
+    <pre style="font-size: 12px; font-family: Consolas; width: 800px; overflow-y: auto">{{ exp }}</pre>
 
   </div>
 
@@ -23,8 +29,13 @@ export default {
     return {
       username: '',
       password: '',
-
       exp: ''
+    }
+  },
+
+  computed: {
+    user() {
+      return this.$store.state.baseAuth
     }
   },
 
@@ -32,28 +43,21 @@ export default {
 
     async login() {
 
-      ///this.$store.commit('baseSnackbar/show', {type: 'dev', message: 'dddd' })
+      let {data} = await this.$axios.get('/users/login',
+        {params: {username: this.username, password: this.password}}
+      )
 
-      //let {data} = await this.$axios.get('/admin/exp/getSum', {params:{num1:1, num2:2}})
-      let {data} = await this.$axios.get('/admin/users/getUsers', {params:{num1:1, num2:2}})
-      this.exp = data
-
-
-      // let {data} = await this.$axios.get('/users/getIdentity',
-      //   {params: {username: this.username, password: this.password}}
-      // )
-      //
-      // if (data.status === 'success') {
-      //   this.$store.commit('base-snackbar/setUserRedirect', data.data)
-      // } else {
-      //
-      // }
+      if (data.status === 'success') {
+        //this.$store.commit('base-snackbar/setUserRedirect', data.data)
+        this.$store.commit('baseAuth/setUser', data.data)
+      }
 
     },
 
 
     msg() {
-      this.$store.commit('baseSnackbar/show', {type: 'info', message: 'dddd' })
+      // this.$store.commit('baseSnackbar/show', {type: 'info', message: 'dddd'})
+      this.$store.commit('baseAuth/setUser', {name: 'Roror'})
     }
 
   }
@@ -67,7 +71,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  /*height: 500px;*/
 }
 
 .form {
