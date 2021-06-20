@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import config from "../spa.config";
+
 export default {
 
   data() {
@@ -48,8 +50,10 @@ export default {
       )
 
       if (data.status === 'success') {
-        //this.$store.commit('base-snackbar/setUserRedirect', data.data)
-        this.$store.commit('baseAuth/setUser', data.data)
+        let user = data.data
+        this.$store.commit('baseAuth/setUser', user)
+        let startPage = config.roles[user.role].startPage
+        await this.$router.push(startPage)
       }
 
     },

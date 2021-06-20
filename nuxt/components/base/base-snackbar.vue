@@ -17,7 +17,7 @@
 
 // this.$store.commit('baseSnackbar/show', {type: 'dev', message: 'dddd' })
 
-import config from "../../app.config";
+import config from "../../spa.config";
 
 export default {
   name: 'base-snackbar',
