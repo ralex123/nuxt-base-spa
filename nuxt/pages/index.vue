@@ -7,7 +7,7 @@
       <v-text-field v-model="username" label="Login"/>
       <v-text-field v-model="password" label="Password" type="password"/>
       <v-btn class="mt-4" color="primary" @click="login">Войти</v-btn>
-      <v-btn class="mt-4" color="primary" @click="msg">msg</v-btn>
+      <v-btn class="mt-4" color="primary" @click="expAct">expAct</v-btn>
       <v-btn class="mt-4" color="primary" @click="$router.push('/page')">to page</v-btn>
 
 
@@ -59,9 +59,13 @@ export default {
     },
 
 
-    msg() {
+    async expAct() {
       // this.$store.commit('baseSnackbar/show', {type: 'info', message: 'dddd'})
-      this.$store.commit('baseAuth/setUser', {name: 'Roror'})
+      // this.$store.commit('baseAuth/setUser', {name: 'Roror'})
+      let {data} = await this.$axios.get('/admin/exp-class/getExp', {params:['Вася', 1, 1, false]})
+
+      this.exp = data
+
     }
 
   }
