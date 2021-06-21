@@ -10,9 +10,10 @@
       <v-btn class="mt-4" color="primary" @click="expAct">expAct</v-btn>
       <v-btn class="mt-4" color="primary" @click="$router.push('/page')">to page</v-btn>
 
+      <v-btn class="mt-4" color="primary" @click="logout">Выйти</v-btn>
 
       <div class="mt-5">
-        <code>{{$store.state.baseAuth}}</code>
+        <code>{{ $store.state.baseAuth }}</code>
       </div>
     </div>
 
@@ -58,12 +59,16 @@ export default {
 
     },
 
+    logout() {
+      this.$store.commit('baseAuth/logOut')
+      this.$router.push('/')
+    },
 
     async expAct() {
       // this.$store.commit('baseSnackbar/show', {type: 'info', message: 'dddd'})
       // this.$store.commit('baseAuth/setUser', {name: 'Roror'})
-      let {data} = await this.$axios.get('/admin/exp-class/getExp', {params:['Вася', 1, 1, false]})
-
+      let {data} = await this.$axios.get('/admin/exp-class/getExp', {params: ['admin', 1, 1, false]})
+      //let {data} = await this.$axios.get('/users/getUserList')
       this.exp = data
 
     }

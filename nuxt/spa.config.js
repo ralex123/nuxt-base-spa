@@ -24,7 +24,7 @@ config.roles = {
     startPage: '/tree'
   },
   'roleAdmin': {
-    startPage: '/page'
+    startPage: '/admin/users'
   },
 }
 
