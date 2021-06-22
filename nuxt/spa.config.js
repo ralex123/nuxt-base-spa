@@ -21,7 +21,7 @@ config.baseSnackbar = {
  */
 config.roles = {
   'roleUser': {
-    startPage: '/tree'
+    startPage: '/user-page'
   },
   'roleAdmin': {
     startPage: '/admin/users'
