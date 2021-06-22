@@ -1,0 +1,27 @@
+.x-fbsb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.x-table {
+  width: 100%;
+  //table-layout: fixed;
+  border-collapse: collapse;
+  td {
+    padding: 3px;
+  }
+}
+
+.x-table-stripped {
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
+
+.x-table-hover {
+  tr:hover {
+    background-color: beige;
+    cursor: pointer;
+  }
+}
