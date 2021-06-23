@@ -35,7 +35,7 @@ export class UsersApi extends Controller {
 
   ///////
   static cudUser = {
-    descript: 'Создать/обновить/удалить пользователя',
+    descript: 'Создать/обновить пользователя',
     signature: ['cudUser', 'N:id', 'S:login', 'S:name', 'S:role', 'N:flag_block', 'S:password'],
   }
 
