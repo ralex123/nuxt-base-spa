@@ -24,7 +24,13 @@
 </template>
 
 <script>
-import config from "../spa.config";
+import config from "../spa.config"
+import DataBases from "../../api/config/DataBases.mjs"
+import {permissions} from "../../api/config/Permissions.mjs";
+
+//import Routs from "../../api/config/Routs.mjs";
+
+//import {UsersApi} from "../../api/controllers/UsersApi.mjs";
 
 export default {
 
@@ -67,7 +73,12 @@ export default {
     async expAct() {
       // this.$store.commit('baseSnackbar/show', {type: 'info', message: 'dddd'})
       // this.$store.commit('baseAuth/setUser', {name: 'Roror'})
-      let {data} = await this.$axios.get('/admin/exp-class/getExp', {params: ['admin', 1, 1, false]})
+      // let nn = UsersApi.cudUser2.descript
+
+      let str = permissions.roleAdmin.startPage
+
+
+      let {data} = await this.$axios.get('/admin/exp/getExp', {params: [str, 1, 2, false]})
       //let {data} = await this.$axios.get('/users/getUserList')
       this.exp = data
 
