@@ -6,17 +6,10 @@ import {maria} from "./server/MariaDb.mjs";
 import DataBases from "./config/DataBases.mjs";
 import User from "./config/User.mjs";
 
-
 const app = express()
 const port = 15012
 
-
-// todo - спрятать??
-
-Auth.checkPermission()
 maria.createPool(DataBases.mariaDb)
-
-const SUCCESS = 'success';
 
 app.set('json spaces', 2)
 
@@ -89,10 +82,10 @@ app.use(async function (req, res, next) {
         /// Возврат ответа
         if (actionResult instanceof Promise) {
           // Если экшен асинхронный и вернул промис
-          actionResult.then(result => res.json({status: SUCCESS, data: result})).catch(next)
+          actionResult.then(result => res.json({status: 'success', data: result})).catch(next)
         } else {
           // Иначе экшен синхронный и вернул нечто через return
-          res.json({status: SUCCESS, data: actionResult})
+          res.json({status: 'success', data: actionResult})
         }
 
       } else {

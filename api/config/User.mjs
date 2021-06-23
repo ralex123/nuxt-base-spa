@@ -1,7 +1,7 @@
 import {maria} from "../server/MariaDb.mjs";
-import UserInterface from "../server/UserInterface.mjs";
+import BaseUser from "../server/BaseUser.mjs";
 
-export default class User extends UserInterface {
+export default class User extends BaseUser {
 
   async setIdentityByToken(token) {
 

@@ -1,4 +1,4 @@
-export default class UserInterface {
+export default class BaseUser {
 
   id = null
   login = null
@@ -14,5 +14,6 @@ export default class UserInterface {
     this.name = 'Guest'
     this.role = 'roleGuest'
   }
+
 
 }
