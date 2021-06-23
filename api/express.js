@@ -55,7 +55,7 @@ app.use(async function (req, res, next) {
       }
 
       let params = (req.method === 'GET') ? req.query : req.body
-      let task = routs[path][2]
+      let task = routs[path][1]
 
       /// Авторизация
       let user = new User()
@@ -66,22 +66,25 @@ app.use(async function (req, res, next) {
 
         /// Создание объекта контроллера
         let controllerClass = routs[path][0]
-        let actionName = routs[path][1].signature[0]
         let controller = new controllerClass(user)
 
-        /// Подготовка параметров
+        //let actionName = routs[path][1].signature[0]
+        /// Имя экшена совпадает с последним словом в путь /path/to/actionName
+        let actionName = path.split('/')[path.split('/').length - 1]
+
+        /// Подготовка параметров todo
         let sendParams = Object.values(params)
-        let refParams = routs[path][1].signature.slice(1)
-        let convertParams = []
-        sendParams.forEach((val, index) => {
-          let refType = refParams[index][0]
-          if (refType === 'S') convertParams.push(String(val))
-          if (refType === 'N') convertParams.push(Number(val))
-          if (refType === 'B') convertParams.push(Boolean(val))
-        })
+        // let refParams = routs[path][1].signature.slice(1)
+        // let convertParams = []
+        // sendParams.forEach((val, index) => {
+        //   let refType = refParams[index][0]
+        //   if (refType === 'S') convertParams.push(String(val))
+        //   if (refType === 'N') convertParams.push(Number(val))
+        //   if (refType === 'B') convertParams.push(Boolean(val))
+        // })
 
         /// Вызов экшена
-        let actionResult = controller[actionName](...convertParams)
+        let actionResult = controller[actionName](...sendParams)
 
         /// Возврат ответа
         if (actionResult instanceof Promise) {
@@ -91,6 +94,7 @@ app.use(async function (req, res, next) {
           // Иначе экшен синхронный и вернул нечто через return
           res.json({status: SUCCESS, data: actionResult})
         }
+
       } else {
         throw new Error403(`Запрещен доступ. Роль: "${user.role}", задача: "${task}", экшен: "${path}"`)
       }

@@ -1,21 +1,17 @@
 import {tasks} from "./Permissions.mjs";
-import {ExpClassApi} from "../controllers/ExpClassApi.mjs";
+import {ExpApi} from "../controllers/ExpApi.mjs";
 import {UsersApi} from "../controllers/UsersApi.mjs";
 
 
 export default {
 
 
-  '/users/login': [UsersApi, UsersApi.getIdentity, tasks.login],
+  '/users/getUser': [UsersApi, tasks.login],
+  '/users/getUserList': [UsersApi, tasks.manageUsers],
+  '/users/cudUser': [UsersApi, tasks.manageUsers],
 
-  '/users/getUserList': [UsersApi, UsersApi.getUserList, tasks.manageUsers],
-  '/users/cudUser': [UsersApi, UsersApi.cudUser, tasks.manageUsers],
-  '/admin/exp/getGuest': [ExpClassApi, ExpClassApi.getExpGuest, tasks.expGuest],
+  '/exp/getExpGuest': [ExpApi, tasks.expGuest],
+  '/exp/getExpAdmin': [ExpApi, tasks.devExp],
 
-
-  '/admin/exp/getExp': [ExpClassApi, ExpClassApi.getExpAzaza, tasks.devExp],
-
-
-  //admin_expClass_getExp: [new ExpClassApi().getExp, tasks.devExp]
 
 }

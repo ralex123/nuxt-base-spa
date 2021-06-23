@@ -52,7 +52,7 @@ export default {
 
     async login() {
 
-      let {data} = await this.$axios.get('/users/login',
+      let {data} = await this.$axios.get('/users/getUser',
         {params: {username: this.username, password: this.password}}
       )
 
@@ -76,9 +76,7 @@ export default {
       // let nn = UsersApi.cudUser2.descript
 
       let str = permissions.roleAdmin.startPage
-
-
-      let {data} = await this.$axios.get('/admin/exp/getExp', {params: [str, 1, 2, false]})
+      let {data} = await this.$axios.get('/exp/getExpGuest', {params: [1]})
       //let {data} = await this.$axios.get('/users/getUserList')
       this.exp = data
 
