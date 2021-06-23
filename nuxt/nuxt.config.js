@@ -5,7 +5,7 @@ export default {
   ssr: false,
 
   server: {
-    port: 3100 // default: 3000
+    port: 15011 // default: 3000
   },
 
   // Target: https://go.nuxtjs.dev/config-target

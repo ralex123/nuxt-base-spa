@@ -4,7 +4,7 @@ config.mode = (process.env.NODE_ENV === 'development') ?
   'dev' : 'prod'
 
 config.baseAxiosPrefixUrl = (config.mode === 'dev') ?
-  'http://localhost:3333/' : 'https://api_taskcmd.ru/'
+  'http://localhost:15012/' : 'https://jsjs.artnetix.com/_api_/'
 
 config.baseSnackbar = {
   timeout: 20000,
