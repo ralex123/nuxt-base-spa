@@ -1,15 +1,17 @@
 import express from 'express'
-import routs from "./config/Routs.mjs"
+import routs from "./config/routs.mjs"
 import {Error403, Error404, ServerError} from "./server/Errors.mjs";
-import {Auth} from "./server/Auth.mjs";
-import {maria} from "./server/MariaDb.mjs";
+import {maria} from "./server/mariadb.mjs";
 import User from "./config/User.mjs";
 import {databases, ENV_DEV, PORT} from "./config/api.mjs";
 
 const app = express()
+
 const port = PORT
 
-maria.createPool(databases.mariaDb)
+if (databases.mariaDb) {
+  maria.createPool(databases.mariaDb)
+}
 
 
 /// Для dev-режима
@@ -62,7 +64,7 @@ app.use(async function (req, res, next) {
       await user.setIdentityByToken(token)
 
       /// Аутентификация
-      if (Auth.can(user.role, task)) {
+      if (user.can(task)) {
 
         /// Создание объекта контроллера
         let controllerClass = routs[path][0]

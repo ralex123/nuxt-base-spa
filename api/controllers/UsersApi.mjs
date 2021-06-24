@@ -1,6 +1,6 @@
 import {Controller} from "../server/Controller.mjs"
 import {SnackbarMessage} from "../server/Errors.mjs"
-import {maria} from "../server/MariaDb.mjs"
+import {maria} from "../server/mariadb.mjs"
 import bcrypt from "bcrypt"
 import crypto from "crypto"
 

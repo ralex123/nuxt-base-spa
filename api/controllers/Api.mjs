@@ -1,4 +1,4 @@
-import routs from "../config/Routs.mjs";
+import routs from "../config/routs.mjs";
 
 function getParamNames(func) {
   let fnStr = func.toString().replace(/((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg, '');

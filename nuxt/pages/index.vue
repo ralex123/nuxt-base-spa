@@ -25,10 +25,9 @@
 
 <script>
 import config from "../config/spa"
-import DataBases from "../../api/config/DataBases.mjs"
 import {roles} from "../../api/config/api.mjs";
 
-//import Routs from "../../api/config/Routs.mjs";
+//import Routs from "../../api/config/routs.mjs";
 
 //import {UsersApi} from "../../api/controllers/UsersApi.mjs";
 

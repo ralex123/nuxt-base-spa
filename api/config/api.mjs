@@ -23,17 +23,17 @@ const roles = {
 
   roleGuest: {
     startPage: '/index',
-    grants: [tasks.login, tasks.regUser, tasks.expGuest],
+    permissions: [tasks.login, tasks.regUser, tasks.expGuest],
   },
 
   roleUser: {
     startPage: '/user',
-    grants: [...groups.userTasks, tasks.login],
+    permissions: [...groups.userTasks, tasks.login],
   },
 
   roleAdmin: {
     startPage: '/service',
-    grants: [tasks.manageUsers, tasks.devExp, ...groups.userTasks, tasks.login],
+    permissions: [tasks.manageUsers, tasks.devExp, ...groups.userTasks, tasks.login],
   },
 }
 

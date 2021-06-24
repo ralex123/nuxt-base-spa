@@ -1,4 +1,4 @@
-import {maria} from "../server/MariaDb.mjs";
+import {maria} from "../server/mariadb.mjs";
 import BaseUser from "../server/BaseUser.mjs";
 
 export default class User extends BaseUser {
