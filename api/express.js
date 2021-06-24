@@ -3,29 +3,36 @@ import routs from "./config/Routs.mjs"
 import {Error403, Error404, ServerError} from "./server/Errors.mjs";
 import {Auth} from "./server/Auth.mjs";
 import {maria} from "./server/MariaDb.mjs";
-import DataBases from "./config/DataBases.mjs";
 import User from "./config/User.mjs";
+import {databases, ENV_DEV, PORT} from "./config/api.mjs";
 
 const app = express()
-const port = 15012
+const port = PORT
 
-maria.createPool(DataBases.mariaDb)
+maria.createPool(databases.mariaDb)
 
-app.set('json spaces', 2)
 
-/// CORS
-/// to_do res.header('Access-Control-Allow-Headers', 'Authorization, Origin, X-Requested-With, Content-Type, Accept');
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST')
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', '*')
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200)
-  } else {
-    console.log('Time:', Date.now(), req.path)
-    next()
-  }
-})
+/// Для dev-режима
+if (ENV_DEV) {
+
+  /// Форматирование JSON
+  app.set('json spaces', 2)
+
+  /// CORS
+  app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST')
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', '*')
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(200)
+    } else {
+      console.log('Time:', Date.now(), req.path)
+      next()
+    }
+  })
+
+}
+
 
 /// JSON из POST запроса
 app.use(express.json());

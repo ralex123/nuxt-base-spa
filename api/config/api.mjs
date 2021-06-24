@@ -1,10 +1,9 @@
-export let roles = {
-  roleGuest: 'roleGuest',
-  roleUser: 'roleUser',
-  roleAdmin: 'roleAdmin',
-}
+import os from 'os';
 
-export let tasks = {
+const PORT = 15012
+const ENV_DEV = (os.hostname() === 'lenovo-apc')
+
+const tasks = {
   login: 'login',
   regUser: 'regUser',
   expGuest: 'expGuest',
@@ -16,11 +15,11 @@ export let tasks = {
   devExp: 'devExp',
 }
 
-let groups = {
+const groups = {
   userTasks: [tasks.useService]
 }
 
-export let permissions = {
+const roles = {
 
   roleGuest: {
     startPage: '/index',
@@ -38,4 +37,19 @@ export let permissions = {
   },
 }
 
+const databases = {
+
+  mariaDb: {
+    host: 'localhost',
+    port: (ENV_DEV) ? 3309 : 3306,
+    database: 'baseapp',
+    user: (ENV_DEV) ? 'root' : 'dbuser',
+    password: (ENV_DEV) ? 'root' : 'mariapass',
+    connectionLimit: 5
+  }
+
+}
+
+
+export {PORT, ENV_DEV, tasks, roles, databases}
 

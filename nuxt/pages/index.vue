@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import config from "../spa.config"
+import config from "../config/spa"
 import DataBases from "../../api/config/DataBases.mjs"
-import {permissions} from "../../api/config/Permissions.mjs";
+import {roles} from "../../api/config/api.mjs";
 
 //import Routs from "../../api/config/Routs.mjs";
 
@@ -74,8 +74,8 @@ export default {
       // this.$store.commit('baseSnackbar/show', {type: 'info', message: 'dddd'})
       // this.$store.commit('baseAuth/setUser', {name: 'Roror'})
       // let nn = UsersApi.cudUser2.descript
+      // let str = api.roleAdmin.startPage
 
-      let str = permissions.roleAdmin.startPage
       let {data} = await this.$axios.get('/exp/getExpGuest', {params: [1]})
       //let {data} = await this.$axios.get('/users/getUserList')
       this.exp = data

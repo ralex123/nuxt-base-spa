@@ -1,4 +1,4 @@
-import {tasks} from "./Permissions.mjs";
+import {tasks} from "./api.mjs";
 import {ExpApi} from "../controllers/ExpApi.mjs";
 import {UsersApi} from "../controllers/UsersApi.mjs";
 

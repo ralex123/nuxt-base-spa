@@ -1,4 +1,4 @@
-import config from '../spa.config'
+import config from '../config/spa'
 
 export default (context, inject) => {
 

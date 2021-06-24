@@ -1,5 +1,4 @@
 import * as mariadb from "mariadb";
-import DataBases from "../config/DataBases.mjs";
 
 export let maria = {
 

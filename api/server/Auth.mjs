@@ -1,4 +1,4 @@
-import {permissions, roles, tasks} from "../config/Permissions.mjs";
+import {roles, tasks} from "../config/api.mjs";
 import User from "../config/User.mjs";
 
 
@@ -12,7 +12,7 @@ export let Auth = {
    * @returns {boolean}
    */
   can(role, task) {
-    let objRole = permissions[role]
+    let objRole = roles[role]
     if (objRole) {
       return (objRole.grants.indexOf(task) !== -1)
     } else {
