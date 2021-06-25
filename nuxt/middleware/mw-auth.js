@@ -8,6 +8,7 @@ export default async function ({ app, store, route, $axios, redirect }) {
   let role = store.state.baseAuth.role
   if (config.roles[role].permissions.indexOf(path) === -1) {
     redirect(config.roles[role].startPage)
+    store.commit('baseSnackbar/show', {type:'info', message:'Нет доступа к этой странице'})
   }
 
 

@@ -16,10 +16,11 @@ config.baseSnackbar = {
 // Страницы приложения
 const pageIndex = '/'
 const pageRegister = '/register'
+const page404 = '/404.html'
 const pageUser = '/user-page'
 const pageManageUsers = '/admin/users'
 
-const gpUser = [pageIndex, pageRegister]
+const gpUser = [page404, pageIndex, pageRegister]
 
 
 /**

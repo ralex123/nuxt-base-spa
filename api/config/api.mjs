@@ -42,6 +42,9 @@ const databases = {
     user: (ENV_DEV) ? 'root' : 'dbuser',
     password: (ENV_DEV) ? 'root' : 'mariapass',
     connectionLimit: 5
+  },
+  mongoDb: {
+    full : "mongodb+srv://mn_user:Nk5FZpWnhG8ZbqY@clusterexp.0xub4.mongodb.net/expdb?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true"
   }
 }
 
