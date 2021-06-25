@@ -13,61 +13,31 @@ config.baseSnackbar = {
 }
 
 
-///////////////////////////////////////////////////
+// Страницы приложения
+const pageIndex = '/'
+const pageRegister = '/register'
+const pageUser = '/user-page'
+const pageManageUsers = '/admin/users'
+
+const gpUser = [pageIndex, pageRegister]
 
 
 /**
  * Параметры ролей
  */
 config.roles = {
+  'roleGuest': {
+    startPage: pageIndex,
+    permissions: [...gpUser],
+  },
   'roleUser': {
-    startPage: '/user-page'
+    startPage: pageUser,
+    permissions: [...gpUser, pageUser],
   },
   'roleAdmin': {
-    startPage: '/admin/users'
+    startPage: pageManageUsers,
+    permissions: [...gpUser, pageUser, pageManageUsers]
   },
 }
-
-// config.appbar = [
-//   {
-//     section: 'Производство', pages: [
-//       pages.prodCut1,
-//       pages.prodCut2,
-//       pages.prodOrders,
-//     ]
-//   },
-//   {
-//     section: 'Exp', pages: [
-//       pages.expCouchDb1,
-//       pages.expCouchDb2,
-//     ]
-//   },
-// ]
-
-////////////////
-
-// /**
-//  * Конфиг компонента snackbar-ex
-//  * @type {{debug: {timeout: number}, user: {timeout: number}}}
-//  */
-// config.snackbar = {
-//   user: {
-//     timeout: 20000
-//   },
-//   debug: {
-//     timeout: 0
-//   }
-// }
-//
-// /**
-//  * Конфиг проекта
-//  */
-// config.app = {
-//   name: 'textile-v3',
-//   BAR: {
-//     brand: '大和魂',
-//     pages: []
-//   }
-// }
 
 export default config

@@ -21,24 +21,20 @@ const groups = {
 
 const roles = {
 
-  roleGuest: {
-    startPage: '/index',
+  'roleGuest': {
     permissions: [tasks.login, tasks.regUser, tasks.expGuest],
   },
 
-  roleUser: {
-    startPage: '/user',
+  'roleUser': {
     permissions: [...groups.userTasks, tasks.login],
   },
 
-  roleAdmin: {
-    startPage: '/service',
+  'roleAdmin': {
     permissions: [tasks.manageUsers, tasks.devExp, ...groups.userTasks, tasks.login],
   },
 }
 
 const databases = {
-
   mariaDb: {
     host: 'localhost',
     port: (ENV_DEV) ? 3309 : 3306,
@@ -47,9 +43,6 @@ const databases = {
     password: (ENV_DEV) ? 'root' : 'mariapass',
     connectionLimit: 5
   }
-
 }
 
-
 export {PORT, ENV_DEV, tasks, roles, databases}
-

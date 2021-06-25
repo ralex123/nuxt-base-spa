@@ -57,7 +57,7 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-    treeShake: true,
+    // treeShake: true,
     theme: {
       dark: false,
       themes: {
@@ -80,6 +80,15 @@ export default {
   },
 
   router: {
-    middleware: ['mw-auth']
+    middleware: ['mw-auth'],
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'custom',
+        path: '*',
+        component: resolve(__dirname, 'pages/404.vue')
+      })
+    }
+
   },
+
 }
