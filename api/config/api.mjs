@@ -44,8 +44,10 @@ const databases = {
     connectionLimit: 5
   },
   mongoDb: {
-    full : "mongodb+srv://mn_user:Nk5FZpWnhG8ZbqY@clusterexp.0xub4.mongodb.net/expdb?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true"
+    uri: "mongodb+srv://mn_user:Nk5FZpWnhG8ZbqY@clusterexp.0xub4.mongodb.net/expdb" +
+    "?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true"
   }
+
 }
 
 export {PORT, ENV_DEV, tasks, roles, databases}

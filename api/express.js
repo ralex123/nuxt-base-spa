@@ -4,6 +4,7 @@ import {Error403, Error404, ServerError} from "./server/Errors.mjs";
 import {maria} from "./server/mariadb.mjs";
 import User from "./config/User.mjs";
 import {databases, ENV_DEV, PORT} from "./config/api.mjs";
+import mongoose from "mongoose";
 
 const app = express()
 
@@ -11,8 +12,13 @@ const port = PORT
 
 if (databases.mariaDb) {
   maria.createPool(databases.mariaDb)
+  console.log('maria.createPool')
 }
 
+if (databases?.mongoDb?.uri) {
+  await mongoose.connect(databases?.mongoDb?.uri, {useNewUrlParser: true, useUnifiedTopology: true})
+  console.log('mongoose.connect')
+}
 
 /// Для dev-режима
 if (ENV_DEV) {
@@ -39,7 +45,6 @@ if (ENV_DEV) {
 /// JSON из POST запроса
 app.use(express.json());
 //app.use(express.urlencoded({ extended: true }));
-
 
 app.use(async function (req, res, next) {
 
@@ -120,5 +125,5 @@ app.use(function (err, req, res, next) {
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Server listening at http://localhost:${port}`)
 })

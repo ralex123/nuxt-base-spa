@@ -15,10 +15,11 @@ config.baseSnackbar = {
 
 // Страницы приложения
 const pageIndex = '/'
-const pageRegister = '/register'
 const page404 = '/404.html'
+const pageRegister = '/register'
 const pageUser = '/user-page'
 const pageManageUsers = '/admin/users'
+const pageExpPage = '/admin/exp-page'
 
 const gpUser = [page404, pageIndex, pageRegister]
 
@@ -37,7 +38,7 @@ config.roles = {
   },
   'roleAdmin': {
     startPage: pageManageUsers,
-    permissions: [...gpUser, pageUser, pageManageUsers]
+    permissions: [...gpUser, pageUser, pageManageUsers, pageExpPage]
   },
 }
 

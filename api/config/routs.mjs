@@ -5,11 +5,13 @@ import {UsersApi} from "../controllers/UsersApi.mjs";
 
 export default {
 
-  '/users/getUser': [UsersApi, tasks.login],
-  '/users/getUserList': [UsersApi, tasks.manageUsers],
-  '/users/cudUser': [UsersApi, tasks.manageUsers],
+  '/users/getUser':      [UsersApi, tasks.login],
+  '/users/getUserList':  [UsersApi, tasks.manageUsers],
+  '/users/cudUser':      [UsersApi, tasks.manageUsers],
 
-  '/exp/getExpGuest': [ExpApi, tasks.expGuest],
-  '/exp/getExpAdmin': [ExpApi, tasks.devExp],
+  '/exp/getExpGuest':    [ExpApi, tasks.expGuest],
+  '/exp/getExpAdmin':    [ExpApi, tasks.devExp],
+  '/exp/getExpMongo':    [ExpApi, tasks.devExp],
+  '/exp/getExpMongoose': [ExpApi, tasks.devExp],
 
 }

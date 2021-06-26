@@ -8,7 +8,7 @@
       <v-text-field v-model="password" label="Password" type="password"/>
       <v-btn class="mt-4" color="primary" @click="login">Войти</v-btn>
       <v-btn class="mt-4" color="primary" @click="expAct">expAct</v-btn>
-      <v-btn class="mt-4" color="primary" @click="$router.push('/page')">to page</v-btn>
+      <v-btn class="mt-4" color="primary" @click="$router.push('/admin/exp-page')">exp-page</v-btn>
 
       <v-btn class="mt-4" color="primary" @click="logout">Выйти</v-btn>
 
