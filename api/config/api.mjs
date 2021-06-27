@@ -4,6 +4,7 @@ const PORT = 15012
 const ENV_DEV = (os.hostname() === 'lenovo-apc')
 
 const tasks = {
+
   login: 'login',
   regUser: 'regUser',
   expGuest: 'expGuest',
@@ -35,6 +36,7 @@ const roles = {
 }
 
 const databases = {
+
   mariaDb: {
     host: 'localhost',
     port: (ENV_DEV) ? 3309 : 3306,
@@ -43,11 +45,11 @@ const databases = {
     password: (ENV_DEV) ? 'root' : 'mariapass',
     connectionLimit: 5
   },
+
   mongoDb: {
     uri: "mongodb+srv://mn_user:Nk5FZpWnhG8ZbqY@clusterexp.0xub4.mongodb.net/expdb" +
     "?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true"
   }
-
 }
 
 export {PORT, ENV_DEV, tasks, roles, databases}

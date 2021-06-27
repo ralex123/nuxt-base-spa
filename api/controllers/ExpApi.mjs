@@ -108,10 +108,10 @@ export class ExpApi extends Controller {
     //user.flag_block_azaza = true
     //await user.save()
 
-    // let user = new MonUser()
-    // user.name = 'Pasha'
-    // user.age = 22
-    // await user.save()
+    let user = new MonUser()
+    user.name = 'Masha'
+    user.age = 23
+    await user.save()
 
     //return user
     return MonUser.find()
